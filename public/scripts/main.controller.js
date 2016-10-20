@@ -1,3 +1,4 @@
+
 app.controller('MainController', MainController);
 
 function MainController(giphy) {
@@ -14,7 +15,7 @@ function MainController(giphy) {
     main.classRandom = 'random';
     giphy.getRandom().then(function(image) {
       main.image = image;
-      //console.log(main.image);
+      console.log('random click',main.image);
     });
   };//end of randomGiphy
 
@@ -34,7 +35,7 @@ function MainController(giphy) {
     main.classSearch = 'random';
     giphy.getSearch(main.search).then(function (images) {
       main.searchImages = images;
-      //console.log('search main.image', main.searchImages);
+      console.log('search main.image', main.searchImages);
     });
   };//end of searchGiphy
 
