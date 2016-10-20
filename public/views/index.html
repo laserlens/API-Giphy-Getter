@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Learning API's with Star Wars</title>
+    <link rel="stylesheet" href="styles/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="scripts/client.js"></script>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="scripts/main.controller.js"></script>
+    <script src="scripts/giphyapi.service.js" charset="utf-8"></script>
   </head>
 
   <body ng-app="giphyGetter" ng-controller="MainController as main">
     <main>
+      <img ng-src="{{main.image}}" />
       <button ng-click="main.randomGiphy()">Get Random Giphy</button>
       <form>
         <input type="text" ng-model="main.search">
         <button type="submit" ng-click="main.searchGiphy()">Search the Giphy</button>
       </form>
-      <img ng-src="{{main.image}}" />
+      <span ng-repeat="image in main.searchImages">
+        <img ng-src="{{image.images.fixed_width.url}}" />
+      </span>
     </main>
 
   </body>
