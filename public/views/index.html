@@ -12,14 +12,18 @@
 
   <body ng-app="giphyGetter" ng-controller="MainController as main">
     <main>
-      <img ng-src="{{main.image}}" />
-      <button ng-click="main.randomGiphy()">Get Random Giphy</button>
-      <form>
-        <input type="text" ng-model="main.search">
-        <button type="submit" ng-click="main.searchGiphy()">Search the Giphy</button>
-      </form>
+      <img ng-click="main.imageButton()" ng-class="main.classRandom" ng-src="{{main.image}}" />
+      <div ng-class="main.classHolder" id="holder">
+        <p>
+          <button ng-click="main.randomGiphy()">Get Random Giphy</button>
+        </p>
+        <form>
+          <input type="text" ng-model="main.search">
+          <button type="submit" ng-click="main.searchGiphy()">Search the Giphy</button>
+        </form>
+      </div>
       <span ng-repeat="image in main.searchImages">
-        <img ng-src="{{image.images.fixed_width.url}}" />
+        <img ng-click="" ng-class="main.classSearch" ng-src="{{image.images.fixed_height.url}}" />
       </span>
     </main>
 

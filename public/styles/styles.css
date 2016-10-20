@@ -1,4 +1,16 @@
 body{
   margin: 0 auto;
   text-align: center;
+  background-color: navy;
+}
+.marginHolder{
+  margin-top: 15em;
+}
+#holder {
+  border: 10px solid black;
+  background-color: gray;
+  padding: 1em 1em 1em 1em;
+}
+.random {
+  border: 5px solid sienna;
 }
