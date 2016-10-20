@@ -23,7 +23,7 @@
         </form>
       </div>
       <span ng-repeat="image in main.searchImages">
-        <img ng-click="" ng-class="main.classSearch" ng-src="{{image.images.fixed_height.url}}" />
+        <img ng-click="main.searchImagesURL($index)" ng-class="main.classSearch" ng-src="{{image.images.fixed_height.url}}" />
       </span>
     </main>
 
