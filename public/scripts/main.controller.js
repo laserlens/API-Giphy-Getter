@@ -32,6 +32,7 @@ function MainController(giphy) {
   };
 
   main.searchGiphy = function () {
+    main.class = 'carousel slide';
     main.classSearch = 'random';
     giphy.getSearch(main.search).then(function (images) {
       main.searchImages = images;
