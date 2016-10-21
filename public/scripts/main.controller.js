@@ -19,14 +19,14 @@ function MainController(giphy) {
     });
   };//end of randomGiphy
 
-//function on click event of picture takes to orginal url
+//function on click event of picture takes user to orginal url
   main.imageButton = function () {
       window.open(main.image);
   };
 
   main.searchImages = [];
 
-//function on click event of picture takes to orginal url
+//function on click event of picture takes user to orginal url
   main.searchImagesURL = function (i) {
     window.open(main.searchImages[i].images.original.url);
   };
