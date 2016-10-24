@@ -29,7 +29,7 @@
 
       <h2>Get a Giphy</h2>
 
-      <ng-view></ng-view>
+      <ng-view onload="main.viewLoaded()"></ng-view>
 
       <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -38,15 +38,17 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">×</span>
-      <h2>Modal Header</h2>
+      <h2>Add to Favorites</h2>
     </div>
-    <div class="modal-body">
-      <p>Some text in the Modal Body</p>
-      <p>Some other text...</p>
-    </div>
-    <div class="modal-footer">
-      <h3>Modal Footer</h3>
-    </div>
+    <form ng-submit="main.postFavorites()">
+      <div class="modal-body">
+        <label for="coments">Add a Coment: </label>
+        <input type="text" name="coments" ng-model="main.newComent">
+      </div>
+      <div class="modal-footer">
+        <h3><input type="submit" class="btn-default" value="ADD"></h3>
+      </div>
+    </form>
   </div>
 
 </div>

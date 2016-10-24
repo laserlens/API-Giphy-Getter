@@ -1,7 +1,7 @@
 .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
+    width: 70%;
+    margin: auto;
   }
 body{
   color: black;
@@ -17,8 +17,14 @@ h2{
   background-color: white;
   padding: 1em 1em 1em 1em;
 }
+#hoverText{
+  color: red;
+  font-size: 24px;
+  padding-bottom: 1em;
+}
 .random {
-  border: 5px solid sienna;
+  padding: none;
+  margin: none;
   transition: all .2s ease-in-out;
 }
 .random:hover {
@@ -45,7 +51,7 @@ h2{
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 70%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
@@ -81,7 +87,7 @@ h2{
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #b22222;
     color: white;
 }
 
@@ -89,6 +95,15 @@ h2{
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #b22222;
     color: white;
+}
+#coments{
+  color: yellow;
+  font-size: 24px;
+  font-style: bold;
+}
+.counter{
+  color: white;
+  font-size: 24px;
 }

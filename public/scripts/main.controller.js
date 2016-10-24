@@ -1,85 +1,117 @@
 
 app.controller('MainController', MainController);
 
+var myImage = '';
 
-function MainController(giphy) {
+function MainController(giphy, $http) {
   var main = this;
-
   main.classHolder = 'marginHolder'
+  //array to hold image data when searched
+  main.searchImages = [];
+  //array to hold favoritesData
+  main.favoritesData = [];
+  //string to hold coment entered in input field
+  main.newComent = '';
 
-  //console.log('MainController Loaded');
 
-  main.image = '';
-
-  //var randyEl = document.getElementById('randyGiph');
-  //randyEl.onclick = runRandom;
-
-  //function runRandom() {
+//funtion to trigger on ng-click of random button
   main.randomGiphy = function() {
       main.classHolder = '';
       main.classRandom = 'random';
+      main.guideText = 'Click Image Add to favorites';
       giphy.getRandom().then(function(image) {
         main.image = image;
         console.log('random click',main.image);
       });
     };//end of randomGiphy
-  //}
 
+
+  // modal controls
   // Get the modal
   var modal = document.getElementById('myModal');
-
-  // Get the button that opens the modal
-  //var btn = document.getElementById("myBtn");
-
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
-
   // When the user clicks the button, open the modal
-  main.onclick = function() {
+  //modal funtion for search
+  main.onclickS = function(i) {
       modal.style.display = "block";
-  }
+      myImage = main.searchImages[i].images.original.url;
+      console.log('whats the imageUrl', myImage);
 
+  }
+  //modal funtion for random
+  main.onclickR = function() {
+      modal.style.display = "block";
+      myImage = main.image;
+      console.log('whats the object myImage',myImage);
+  }
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
       modal.style.display = "none";
   }
-
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
       if (event.target == modal) {
           modal.style.display = "none";
       }
-  }
+  }//end of modal controls
 
 
-
-
-
-//function on click event of picture takes user to orginal url
-  main.imageButton = function () {
-      window.open(main.image);
-  };
-
-  main.searchImages = [];
-
-//function on click event of picture takes user to orginal url
-  main.searchImagesURL = function (i) {
-    window.open(main.searchImages[i].images.original.url);
-  };
-
-//  var searchEl = document.getElementById('searchGiph');
-//  searchEl.onclick = runSearch;
-
-//function runSearch() {
+//funtion for ng-click event on search button
   main.searchGiphy = function () {
     main.class = 'carousel slide';
-    //main.class2 = 'carousel-indicators';
     main.classSearch = 'random';
+    main.guideText = 'Click Image Add to favorites';
     giphy.getSearch(main.search).then(function (images) {
       main.searchImages = images;
       console.log('search main.image', main.searchImages);
     });
   };//end of searchGiphy
-//}
 
+
+//funtion for ng-click even on view favorites button
+main.viewFavorites = function() {
+  main.class = 'carousel slide';
+  $http({
+    method: 'GET',
+    url: '/favorite_route'
+  }).then(function successCallback(response) {
+      main.favoritesData = response.data;
+      main.count = response.data.length;
+      console.log('whats the total count of data', main.count);
+    }, function errorCallback(response) {
+      console.log('Error in Call back');
+    });//end of get
+};//end of viewFavorites
+
+
+
+//funtion for ng-click event add to favorites
+main.postFavorites = function () {
+  main.newImage = myImage;
+  main.data = {coments: main.newComent,
+                imageurl: main.newImage};
+  $http.post("/favorite_route", main.data).success(function(data, status) {
+      });//end of post
+  modal.style.display = "none";
+};//end of postFavorites
+
+// funtion for ng-click event on delete button
+main.deleteFavorite = function ($index) {
+  main.data = main.favoritesData[$index].id;
+  $http.delete("/favorite_route/" + main.data).success(function(data, status) {
+  });//end of delete
+  main.viewFavorites();
+};//end of postFavorites
+
+
+
+//fix carousel bug
+main.viewLoaded=function(){
+ $('.carousel ').carousel()
+}
+//more fix carousel bug
+main.slide = function (dir) {
+  $('#searchCarousel').carousel(dir);
+}
 }//end of MainController
