@@ -3,6 +3,7 @@ app.controller('MainController', MainController);
 
 // variable to hold imageUrl
 var myImage = '';
+var myId = '';
 
 function MainController(giphy, $http) {
   var main = this;
@@ -46,8 +47,14 @@ function MainController(giphy, $http) {
       myImage = main.image;
       console.log('whats the object myImage',myImage);
   }
+  //modal funtion for update favorites
+  main.onclickU = function(i) {
+      modal.style.display = "block";
+      myId = main.favoritesData[i].id;
+      console.log('whats the object myImage',myId);
+  }
   // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+  main.onclickSpan = function() {
       modal.style.display = "none";
   }
   // When the user clicks anywhere outside of the modal, close it
@@ -99,13 +106,28 @@ main.postFavorites = function () {
   modal.style.display = "none";
 };//end of postFavorites
 
-// funtion for ng-click event on delete button
+// function for ng-click event on delete button
 main.deleteFavorite = function ($index) {
   main.data = main.favoritesData[$index].id;
   $http.delete("/favorite_route/" + main.data).success(function(data, status) {
   });//end of delete
   main.viewFavorites();
-};//end of postFavorites
+};//end of deleteFavorites
+
+main.updateFavorites = function () {
+  console.log('update id is', myId);
+  main.newId = myId;
+  main.data = {coments: main.newComent,
+                id: main.newId};
+  $http.put("/favorite_route", main.data).success(function(data, status) {
+  });//end of put
+  main.newComent = null;
+  modal.style.display = "none";
+  main.viewFavorites();
+};//end of updateFavorites
+
+// function for ng-click event for update button
+
 
 
 

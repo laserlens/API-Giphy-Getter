@@ -31,27 +31,6 @@
 
       <ng-view onload="main.viewLoaded()"></ng-view>
 
-      <!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">×</span>
-      <h2>Add to Favorites</h2>
-    </div>
-    <form ng-submit="main.postFavorites()">
-      <div class="modal-body">
-        <label for="coments">Add a Coment: </label>
-        <input type="text" name="coments" ng-model="main.newComent">
-      </div>
-      <div class="modal-footer">
-        <h3><input type="submit" class="btn-default" value="ADD"></h3>
-      </div>
-    </form>
-  </div>
-
-</div>
 
 
     </main>

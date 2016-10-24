@@ -10,7 +10,7 @@
           <img ng-src="{{image.imageurl}}" />
           <div id="coments" class="carousel-caption">{{image.coments}}</div>
           <button ng-click="main.deleteFavorite($index)" class="btn-default btn-danger">DELETE</button>
-          <button class="btn-default btn-success">UPDATE</button>
+          <button ng-click="main.onclickU($index)" class="btn-default btn-success">UPDATE</button>
       </div>
     </div>
     <a class="left carousel-control" href="" ng-click="main.slide('prev')" role="button" data-slide="prev">
@@ -24,4 +24,27 @@
     <p>
     <div class="counter">
       # of favorites: <span>{{main.count}}</span>
+    </div>
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+    <div class="modal-header">
+    <span ng-click="main.onclickSpan()" class="close">×</span>
+    <h2>Update your comment</h2>
+    </div>
+    <form ng-submit="main.updateFavorites()">
+    <div class="modal-body">
+      <label for="coments">New Coment: </label>
+      <input type="text" name="coments" ng-model="main.newComent">
+    </div>
+    <div class="modal-footer">
+      <h3><input type="submit" class="btn-default" value="ADD"></h3>
+    </div>
+    </form>
+    </div>
+
     </div>

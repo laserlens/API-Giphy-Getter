@@ -61,6 +61,7 @@ router.post('/', function (req, res) {
 
 //allows you to update coments
 router.put('/', function (req, res) {
+  console.log('whats the put body', req.body);
   var  id = req.body.id;
   var coments = req.body.coments;
   pool.connect(function (err, client, done) {

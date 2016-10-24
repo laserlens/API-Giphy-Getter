@@ -19,8 +19,8 @@
   - created a delete button to remove a favorites
     - delete button sends the id of the image its attached to then querys the data base to delete the row with the matching id.
   - update button
-    - currently not funtioning
+    - when clicked brings up a modal that allows the user to change the coment of the gif
+    - when the add button on the modal is clicked a put request is sent and the data base is updated
 ## Strech Goals
-  1. get update button working through a put request
   2. when user deletes last gif refresh the page to display nothing.
   3. make carousel next a previous buttons only display when the carousel displays
