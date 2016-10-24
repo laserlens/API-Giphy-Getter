@@ -1,6 +1,7 @@
 
 app.controller('MainController', MainController);
 
+// variable to hold imageUrl
 var myImage = '';
 
 function MainController(giphy, $http) {
@@ -66,6 +67,7 @@ function MainController(giphy, $http) {
       main.searchImages = images;
       console.log('search main.image', main.searchImages);
     });
+    main.search = null;
   };//end of searchGiphy
 
 
@@ -93,6 +95,7 @@ main.postFavorites = function () {
                 imageurl: main.newImage};
   $http.post("/favorite_route", main.data).success(function(data, status) {
       });//end of post
+  main.newComent = null;
   modal.style.display = "none";
 };//end of postFavorites
 
