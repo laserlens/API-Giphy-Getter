@@ -107,3 +107,9 @@ h2{
   color: white;
   font-size: 24px;
 }
+.hideyClass{
+  display: none;
+}
+.showyClass{
+  display: block;
+}

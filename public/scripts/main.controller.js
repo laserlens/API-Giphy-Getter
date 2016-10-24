@@ -1,13 +1,14 @@
 
 app.controller('MainController', MainController);
 
-// variable to hold imageUrl
+// variable to hold imageUrl for delete funtion
 var myImage = '';
+// variable to hold object id for put function
 var myId = '';
 
 function MainController(giphy, $http) {
   var main = this;
-  main.classHolder = 'marginHolder'
+  main.classHolder = 'marginHolder';
   //array to hold image data when searched
   main.searchImages = [];
   //array to hold favoritesData
@@ -86,6 +87,7 @@ main.viewFavorites = function() {
     url: '/favorite_route'
   }).then(function successCallback(response) {
       main.favoritesData = response.data;
+      // to count number of favorites
       main.count = response.data.length;
       console.log('whats the total count of data', main.count);
     }, function errorCallback(response) {

@@ -22,5 +22,7 @@
     - when clicked brings up a modal that allows the user to change the coment of the gif
     - when the add button on the modal is clicked a put request is sent and the data base is updated
 ## Strech Goals
-  2. when user deletes last gif refresh the page to display nothing.
-  3. make carousel next a previous buttons only display when the carousel displays
+  1. when user deletes last gif refresh the page to display nothing.
+      - also fix carousel error thats triggered when database is empty but view Favorites button is clicked
+  2. make carousel next and previous buttons only display when the carousel displays
+  3. go through all the code and correct spelling of coment to correct spelling comment
